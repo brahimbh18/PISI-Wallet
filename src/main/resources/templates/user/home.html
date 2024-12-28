@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards - PISI Online Bank</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/dashboard.css">
+
+</head>
+<body>
+    <div class="header">
+        <h1>PISI ONLINE BANK</h1>
+        <div class="user-profile">
+            <img src="/icons/profile.png" alt="Profile">
+            <span th:text="'Welcome, ' + ${user.firstName}">Welcome, User</span>
+        </div>
+    </div>
+
+    <section class="main-container">
+        <div class="nav">
+            <ul>
+                <li>
+                    <img src="/icons/dashboard.png">
+                    <span><a th:href="@{/user/home}">Dashboard</a></span>
+                </li>
+                <li>
+                    <img src="/icons/cards.png">
+                    <span><a th:href="@{/user/cards}">Cards</a></span>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <img src="/icons/settings.png">
+                    <span>Settings</span>
+                </li>
+                <li>
+                    <img src="/icons/logout.png">
+                    <span><a th:href="@{/logout}">Logout</a></span>
+                </li>
+            </ul>
+        </div>
+        <div class="board">
+            <div class="board-header">
+                <h2>My Wallets</h2>
+
+            </div>
+
+            <div class="cards">
+                <div class="wallet" th:each="wallet : ${wallets}">
+                    <div class="wallet-header">
+                        <div class="wallet-type">
+                            <img src="/icons/savings.png" alt="Savings Icon">
+                            <span th:text="${wallet.name}">Primary Savings</span>
+                        </div>
+                        <span class="wallet-status">Active</span>
+                    </div>
+                    
+                    <div class="wallet-balance">
+                        <span class="balance-label">Available Balance</span>
+                        <h3 class="balance-amount" th:text="${wallet.balance + ' TND'}">$12,450.00</h3>
+                    </div>
+
+                    <div class="wallet-details">
+                        <div class="detail-item">
+                            <span class="label">Wallet ID</span>
+                            <span class="value" th:text="${wallet.id}">ID</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Created Date</span>
+                            <span class="value" th:text="${wallet.createdAt}">Date</span>
+                        </div>
+                    </div>
+
+                    <div class="wallet-actions">
+                        <button class="action-btn primary">Transfer</button>
+                        <a th:href="@{/user/home/{id}(id=${wallet.id})}">
+                            <button class="action-btn secondary">Details</button>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="wallet add">
+                    <div class="addBtn">
+                        <img src="/icons/add.png" alt="Add Wallet">
+                        <span>Create New Wallet</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 PISI Online Bank. All rights reserved.</p>
+    </footer>
+</body>
+</html>

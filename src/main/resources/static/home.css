@@ -1,0 +1,157 @@
+/* Basic Layout */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem;
+}
+
+/* Board Header */
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+.wallet-filter {
+    padding: 0.5rem;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+/* Wallet Card */
+.wallet {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Wallet Header */
+.wallet-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.wallet-type {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.wallet-type img {
+    width: 24px;
+    height: 24px;
+}
+
+.wallet-type span {
+    font-weight: 600;
+}
+
+.wallet-status {
+    color: #2e7d32;
+    font-size: 0.9rem;
+}
+
+/* Balance Section */
+.wallet-balance {
+    text-align: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 1rem;
+}
+
+.balance-label {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.balance-amount {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0.5rem 0;
+}
+
+/* Details Section */
+.wallet-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.detail-item .label {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.detail-item .value {
+    font-weight: 500;
+}
+
+/* Action Buttons */
+.wallet-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    flex: 1;
+    padding: 0.8rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.action-btn.primary {
+    background: #2196f3;
+    color: white;
+}
+
+.action-btn.secondary {
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* Add New Wallet */
+.wallet.add {
+    border: 2px dashed #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.addBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    color: #666;
+}
+
+.addBtn img {
+    width: 32px;
+    height: 32px;
+    opacity: 0.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .cards {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+}

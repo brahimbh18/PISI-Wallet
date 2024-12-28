@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - PISI ONLINE BANK</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="/payment.css">
+</head>
+<body>
+    <div class="header">
+        <h1>PISI ONLINE BANK</h1>
+    </div>
+
+    <section>
+        <div class="nav">
+            <ul>
+                <li>
+                    <img src="/icons/dashboard.png">
+                    <span><a href="">Dashboard</a></span>
+                </li>
+                <li>
+                    <img src="/icons/cards.png">
+                    <span><a href="">Cards</a></span>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <img src="/icons/settings.png">
+                    <span>Settings</span>
+                </li>
+                <li>
+                    <img src="/icons/logout.png">
+                    <span>Logout</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="board">
+            <h2>Make a Payment</h2>
+            
+            <!-- Error Message -->
+            <!--<div class="error-message" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+-->
+            <div class="payment-form-container">
+                <form class="payment-form" action="payment" method="post">
+                    <div class="form-group">
+                        <label for="service">Service</label>
+                        <select id="service" name="service" onchange="toggleCustomService()" required>
+                            <option value="">Select a service</option>
+                            <option value="electricity">Electricity</option>
+                            <option value="water">Water</option>
+                            <option value="internet">Internet</option>
+                            <option value="phone">Phone</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="customServiceGroup" style="display: none;">
+                        <label for="customService">Service Name</label>
+                        <input type="text" id="customService" name="customService" placeholder="Enter service name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="amount">Amount (TND)</label>
+                        <input type="number" id="amount" name="amount" step="0.01" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Confirm Payment</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function toggleCustomService() {
+            const serviceSelect = document.getElementById('service');
+            const customServiceGroup = document.getElementById('customServiceGroup');
+            const customServiceInput = document.getElementById('customService');
+            
+            if (serviceSelect.value === 'other') {
+                customServiceGroup.style.display = 'flex';
+                customServiceInput.required = true;
+            } else {
+                customServiceGroup.style.display = 'none';
+                customServiceInput.required = false;
+                customServiceInput.value = ''; // Clear the input when hidden
+            }
+        }
+    </script>
+</body>
+</html> 

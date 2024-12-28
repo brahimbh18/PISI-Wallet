@@ -1,0 +1,77 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: white;
+    color: black;
+    line-height: 1.6;
+       
+}
+.header {
+    background-color: #3e2932;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.header h1 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav ul {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+}
+
+.nav li {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.nav li a {
+    color: white;
+    text-decoration: none;
+}
+
+.register {
+    background-color: #444444;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+}
+
+.register:hover {
+    background-color: #743530;
+}
+
+
+
+
+footer {
+    text-align: center;
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px; /* Adds spacing inside the footer */
+    margin-top: 20px; /* Adds some space above the footer */
+}
+
+/* Optional: Adjust font size for smaller screens */
+footer p {
+    font-size: 14px; /* Makes text smaller on mobile */
+}
+
+/* Optional: Make footer background color change on hover (for interactivity) */
+footer:hover {
+    background-color: #444444; /* Darker shade when hovered */
+}

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="form.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="header">
+        <h1><a href="/">PISI ONLINE BANK</a></h1>
+
+        <div class="nav">
+            <ul>
+                <li><a href="/login">login</a></li>
+                <li class="register"><a href="/register">become a customer</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="section">
+        <img src="images/logo.png" alt="">
+
+        <div class="formContainer">
+            <h2>Login</h2>
+            <form action="/login" method="post">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+
+
+                <button type="submit">Login</button>
+            </form>
+            
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 PISI Online Bank. All rights reserved.</p>
+    </footer>
+
+
+</body>
+</html>

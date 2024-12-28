@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Registration</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="register.css">
+  <link rel="stylesheet" href="form.css">
+
+</head>
+<body>
+<div class="header">
+  <h1><a href="/">PISI ONLINE BANK</a></h1>
+
+  <div class="nav">
+    <ul>
+      <li><a href="/login">login</a></li>
+      <li class="register"><a href="/register">become a customer</a></li>
+    </ul>
+  </div>
+</div>
+
+<h1>Customer Registration Form</h1>
+<form method="POST" action="#" th:action="@{/register}">
+  <label for="cin">CIN</label>
+  <input type="number" id="cin" name="cin" required>
+
+  <label for="firstName">First Name</label>
+  <input type="text" id="firstName" name="firstName" required>
+
+  <label for="lastName">Last Name</label>
+  <input type="text" id="lastName" name="lastName" required>
+
+  <label for="dateOfBirth">Date of Birth</label>
+  <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+
+  <label for="placeOfBirth">Place of Birth</label>
+  <select id="placeOfBirth" name="placeOfBirth" required>
+    <option value="">--Select Place of Birth--</option>
+    <option value="Ariana">Ariana</option>
+    <option value="Beja">Beja</option>
+    <option value="Ben Arous">Ben Arous</option>
+    <option value="Bizerte">Bizerte</option>
+    <option value="Gabes">Gabes</option>
+    <option value="Gafsa">Gafsa</option>
+    <option value="Jendouba">Jendouba</option>
+    <option value="Kairouan">Kairouan</option>
+    <option value="Kasserine">Kasserine</option>
+    <option value="Kebili">Kebili</option>
+    <option value="Kef">Kef</option>
+    <option value="Mahdia">Mahdia</option>
+    <option value="Manouba">Manouba</option>
+    <option value="Medenine">Medenine</option>
+    <option value="Monastir">Monastir</option>
+    <option value="Nabeul">Nabeul</option>
+    <option value="Sfax">Sfax</option>
+    <option value="Sidi Bouzid">Sidi Bouzid</option>
+    <option value="Siliana">Siliana</option>
+    <option value="Sousse">Sousse</option>
+    <option value="Tataouine">Tataouine</option>
+    <option value="Tozeur">Tozeur</option>
+    <option value="Tunis">Tunis</option>
+    <option value="Zaghouan">Zaghouan</option>
+  </select>
+
+  <label for="gender">Gender</label>
+  <select id="gender" name="gender" required>
+    <option value="">--Select Gender--</option>
+    <option value="male">Male</option>
+    <option value="female">Female</option>
+  </select>
+
+  <label for="phoneNumber">Phone Number</label>
+  <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{8}" placeholder="e.g., 12345678" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="email">walletName :</label>
+  <input type="text" id="walletName" name="walletName" required>
+
+  <label for="password">Password</label>
+  <input type="password" id="password" name="password" required>
+
+  <button type="submit">Register</button>
+</form>
+<p>Already have an account? <a th:href="@{/login}">Login here</a></p>
+<footer>
+  <p>&copy; 2024 PISI Online Bank. All rights reserved.</p>
+</footer>
+
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+
+
+  
+
+h2 {
+  text-align: center;
+}
+
+
+
+ form {  
+  width: 600px; 
+}
+
+footer {
+  position: absolute;
+    text-align: center;
+    background-color: #333333;
+    color: #ffffff;
+    padding: 20px;
+    width: 100%;
+    bottom: 0;
+}
+
+
+footer:hover {
+    background-color: #444444; /* Darker shade when hovered */
+}
+  
