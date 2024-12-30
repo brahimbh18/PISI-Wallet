@@ -3,56 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pisi Online Bank</title>
+    <title>Pisi WALLET</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
     <div class="header">
-        <h1>PISI ONLINE BANK</h1>
-            
+        <h1>PISI WALLET</h1>
+        
         <div class="nav">
-           
-
             <ul>
-                <li><a th:href="@{/login}">login</a></li>
-                <li class="register"><a th:href="@{/register}">become a customer</a></li>
+                <li><a th:href="@{/login}">Login</a></li>
+                <li class="register"><a th:href="@{/register}">Create Wallet</a></li>
             </ul>
         </div>
     </div>
 
     <div id="hero" class="hero">
         <div class="heroContainer">
-            <h2>Welcome to PISI ONLINE BANK</h2>
-            <span class="heroSubtitle">Smart, secure, and effortless—welcome to the future of banking.</span>
+            <h2>Welcome to PISI WALLET</h2>
+            <span class="heroSubtitle">Simplify your payments and manage your money seamlessly.</span>
         </div>
-        <button class="getStarted"><a th:href="@{/register}">Get Started</a></button>
+        <button class="getStarted"><a th:href="@{register}">Get Started</a></button>
     </div>
     
     <div id="about" class="about">
-        <img src="images/logo.png" alt="">
+        
         <div class="aboutContainer">
-            <h3>What is Pisi online bank</h3>
-            <span class="aboutSpan">PISI Online Bank is more than just a financial institution; it's your trusted partner in
-                 achieving financial freedom. Our mission is to revolutionize the way you bank, offering
-                  cutting-edge technology, unmatched security, and personalized services.</span>
+            <h3>What is PISI WALLET?</h3>
+            <span class="aboutSpan">PISI Wallet is your all-in-one digital wallet, designed to streamline your financial transactions. 
+                Whether you're shopping online, sending money to loved ones, or keeping track of expenses, 
+                PISI Wallet makes it quick, secure, and hassle-free.</span>
         </div>
     </div>
+
     <div id="contacts" class="contacts">
         <div class="contactsContainer">
             <h2>Contact Us</h2>
-            <p>We are here to assist you with any questions or services you need.</p>
+            <p>We're here to help you with any questions or support you need.</p>
             <ul>
                 <li><strong>Phone:</strong> +123 456 789</li>
-                <li><strong>Email:</strong> support@pisionlinebank.com</li>
-                <li><strong>Address:</strong> 123 Bank Street, Capital City, Country</li>
-                <li><strong>Operating Hours:</strong> Mon - Fri: 9:00 AM - 5:00 PM</li>
+                <li><strong>Email:</strong> support@pisiwallet.com</li>
+                <li><strong>Operating Hours:</strong> 24/7</li>
             </ul>
         </div>
     </div>   
 
     <footer>
-        <p>&copy; 2024 PISI Online Bank. All rights reserved.</p>
+        <p>&copy; 2024 PISI Wallet. All rights reserved.</p>
     </footer>
 </body>
 </html>

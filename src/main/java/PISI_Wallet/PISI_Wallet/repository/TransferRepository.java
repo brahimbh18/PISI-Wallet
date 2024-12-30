@@ -47,4 +47,5 @@ public class TransferRepository {
             throw new RuntimeException("Failed to fetch transfers: " + e.getMessage(), e);
         }
     }
-} 
+
+}

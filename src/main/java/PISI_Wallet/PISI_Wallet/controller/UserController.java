@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -19,12 +20,14 @@ public class UserController {
     private final PaymentService paymentService;
     private final FundService fundService;
     private final TransferService transferService;
+    private final PostService postService;
 
-    public UserController(WalletService walletService, PaymentService paymentService, FundService fundService, TransferService transferService) {
+    public UserController(WalletService walletService, PaymentService paymentService, FundService fundService, TransferService transferService, PostService postService) {
         this.walletService = walletService;
         this.paymentService = paymentService;
         this.fundService = fundService;
         this.transferService = transferService;
+        this.postService = postService;
     }
 
     @GetMapping("/home")
@@ -32,7 +35,7 @@ public class UserController {
         User user = (User) session.getAttribute("user");
         List<Wallet> wallets = walletService.getWalletsByUserId(user.getId());
         if (user == null || wallets == null) {
-            return "redirect:/login?error";
+            return "redirect:/login.html?error";
         }
 
         model.addAttribute("user", user);
@@ -46,78 +49,53 @@ public class UserController {
         Wallet wallet = walletService.getWalletById(id);
         List<Payment> payments = paymentService.getPaymentsByWalletId(wallet.getId());
         List<Fund> funds = fundService.getFundsByWalletId(wallet.getId());
+        List<Transfer> transfers = transferService.getTransfersByWalletId(wallet.getId());
 
-        System.out.println(funds);
+        System.out.println(transfers);
 
-        if (wallet == null || payments == null || funds == null) {
+        if (wallet == null || payments == null || funds == null || transfers == null) {
             return "redirect:?error";
         }
         session.setAttribute("wallet", wallet);
         session.setAttribute("payments", payments);
         session.setAttribute("funds", funds);
+        session.setAttribute("transfers", transfers);
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd");
+        String formattedDate = wallet.getCreatedAt().format(formatter);
 
         model.addAttribute("user", session.getAttribute("user"));
         model.addAttribute("wallet", wallet);
+        model.addAttribute("createdAt", formattedDate);
         model.addAttribute("payments", payments);
         model.addAttribute("funds", funds);
+        model.addAttribute("transfers", transfers);
+
 
         return "user/wallet";
     }
 
-    @GetMapping("/payment")
-    public String paymentForm() {
-        return "user/payment";
+    @GetMapping("/news")
+    public String news(HttpSession session, Model model) {
+
+        model.addAttribute("user", session.getAttribute("user"));
+        return "user/news";
     }
 
-    @PostMapping("/payment")
-    public String payment(@RequestParam String service, @RequestParam String customService, @RequestParam Double amount, HttpSession session) {
-        Payment payment = new Payment();
-        Wallet wallet = (Wallet) session.getAttribute("wallet");
-        payment.setWalletId(wallet.getId());
-        System.out.println("wallet id : " + wallet.getId());
-        payment.setService((service.equals("other")) ? customService : service);
-        payment.setAmount(amount);
-        if (paymentService.createPayment(payment)) {
-            return "redirect:home?success";
-        }
-        return "redirect:payement?error";
+    @GetMapping("/addWallet")
+    public String addWalletForm(HttpSession session, Model model) {
+
+        return "user/addWallet";
     }
 
-    @GetMapping("/fund")
-    public String fundForm() {
-        return "user/fund";
+    @PostMapping("/addWallet")
+    public String addWallet(HttpSession session, Model model, @RequestParam String walletName) {
+        walletService.create((User) session.getAttribute("user"), walletName);
+        return "redirect:home";
     }
-
-    @PostMapping("/fund")
-    public String fund(@ModelAttribute BankCard bankCard, @RequestParam Double amount, HttpSession session) {
-        Fund fund = new Fund();
-        Wallet wallet = (Wallet) session.getAttribute("wallet");
-        fund.setWalletId(wallet.getId());
-        fund.setAmount(amount);
-        fund.setCardId(bankCard.getId());
-
-        if (fundService.createFund(fund, bankCard)) {
-            return "redirect:home?success";
-        }
-        return "redirect:fund?error";
-    }
-
-    @GetMapping("/transfer")
-    public String transferForm() {
-        return "user/transfer";
-    }
-
-    @PostMapping("/transfer")
-    public String transfer(@RequestParam int walletId, @RequestParam Double amount, HttpSession session) {
-        Transfer transfer = new Transfer();
-        Wallet wallet = (Wallet) session.getAttribute("wallet");
-
-        transfer.setWalletId(wallet.getId());
-        transfer.setReceivingWalletId(walletId);
-        transfer.setAmount(amount);
-        if (transferService.createTransfer(transfer)) {
-            return "redirect:home?success";
-        }
-        return "redirect:transfer?error";
+    @GetMapping("/logout")
+    public String logout(HttpSession session) {
+        session.invalidate();
+        return "redirect:/";
     }
 }

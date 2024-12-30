@@ -1,157 +1,444 @@
-/* Basic Layout */
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    padding: 1.5rem;
+section{
+    padding: 20px;
+    background-color: #e8ecf5;
+    min-height: 83vh;
+    height: auto;
+    width: 90vw;
+    margin: auto;
+    margin-top: 15vh;
+    margin-bottom: 5vh;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: space-between;
+    overflow: auto;
 }
 
-/* Board Header */
-.board-header {
+.nav {
+   display: flex;
+   flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40vh;
+    width: 14vw;
+    padding: 2rem;
+    font-size: 1.5rem;
+    background-color: #2c3e50;
+    border-radius: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+li {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    width: 11vw;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease-in-out;
+    padding: 0.5rem; /* Optional: to make the hover area larger */
+    border-radius: 20px;
+}
+
+li img {
+    height: 1.5rem;
+    width: 1.5rem;
+    transition: inherit; /* Ensures the same transition applies to child elements */
+}
+
+li span {
+    transition: inherit; /* Ensures the same transition applies to the span */
+}
+
+.nav li:hover {
+    transform: translateX(5px);
+    background-color: #34495e;
+    border-radius: 8px;
+}
+
+.nav li:hover a {
+    color: #3498db;
+}
+
+.nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.board {
+    padding: 2rem;
+    background-color: #ffffff;
+    border-radius: 20px;
+    height: auto;
+    min-height: 100%;
+    width: 76vw;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    overflow-y: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    font-size: 2rem;
+    margin-left: vw;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.balance {
+    background: linear-gradient(135deg, #ffffff, #f8f9fa);
+    border: 1px solid #e1e8f0;
+    padding: 2rem;
+    height: 30vh;
+    width: 25vw;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    padding: 0 1rem 5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    width: clamp(250px, 25vw, 400px); /* Minimum 250px, scales up to 400px */
+}
+
+.balance span {
+    font-size: 2rem;
+}
+
+.balance .amount {
+    text-align: center;
+    font-size: 3rem;
+}
+
+
+.card img {
+    width: 5vw;
+    height: auto;
+    max-height: 8vh;
+}
+
+.card {
+    background: linear-gradient(135deg, #2c3e50, #3498db);
+    background-size: 200% 200%;
+    animation: gradientMove 6s ease infinite;
+    height: auto;
+    display: flex;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    flex-direction: column;
+    border-radius: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: white;
+
+    width: clamp(250px, 25vw, 500px); /* Adjusted clamp range */
+    height: clamp(250px, 30vh, 500px); /* Adjusted clamp range */
+    margin: 1rem; /* Added spacing between cards */
+}
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.balance:hover,     .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+@media (max-width: 600px) {
+    .card {
+        padding: 1rem;
+    }
+}
+
+
+.one span,
+.three li {
+    font-size: 1rem; 
+}
+
+
+.two span {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+}
+
+.three {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Prevent alignment issues */
+    gap: 1rem; /* Add space between sections */
+}
+
+.one {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    background: #fff;
-    border-bottom: 1px solid #eee;
+
 }
 
-.wallet-filter {
-    padding: 0.5rem;
-    border: 1px solid #eee;
-    border-radius: 5px;
+.two {
+    font-size: 1.5rem;
 }
 
-/* Wallet Card */
-.wallet {
-    background: #fff;
-    border-radius: 12px;
+.three {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-transactions {
+    background: white;
     padding: 1.5rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    border: 1px solid #e1e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-/* Wallet Header */
+.transactions-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.transactions-list th,
+.transactions-list td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    color: #495057;
+}
+
+.transactions-list .negative {
+    color: #e74c3c;
+}
+
+.transactions-list .positive {
+    color: #27ae60;
+}
+
+.quick-services {
+    margin-top: 20px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.service-card {
+    background: linear-gradient(145deg, #ffffff, #f5f6fa);
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 1px solid #e1e8f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    text-align: center;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(145deg, #ffffff, #e8ecf5);
+    border-color: #3498db;
+}
+
+.service-card img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.service-card span {
+    display: block;
+    font-weight: 500;
+}
+*/* General card container styling */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+/* Individual wallet card styling */
+.wallet {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.wallet:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Wallet header styling */
 .wallet-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
+    margin-bottom: 15px;
 }
 
 .wallet-type {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.wallet-type img {
-    width: 24px;
-    height: 24px;
-}
-
-.wallet-type span {
-    font-weight: 600;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
 }
 
 .wallet-status {
-    color: #2e7d32;
-    font-size: 0.9rem;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    border-radius: 12px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
 }
 
-/* Balance Section */
+/* Wallet balance section */
 .wallet-balance {
+    margin: 15px 0;
     text-align: center;
-    padding: 1rem 0;
-    border-bottom: 1px solid #eee;
-    margin-bottom: 1rem;
 }
 
 .balance-label {
+    font-size: 0.9em;
     color: #666;
-    font-size: 0.9rem;
 }
 
 .balance-amount {
-    font-size: 2rem;
-    font-weight: 700;
-    margin: 0.5rem 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #007bff;
 }
 
-/* Details Section */
+/* Wallet details section */
 .wallet-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
 }
 
 .detail-item {
     display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
+    justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-.detail-item .label {
-    color: #666;
-    font-size: 0.8rem;
+.label {
+    font-size: 0.9em;
+    color: #555;
 }
 
-.detail-item .value {
-    font-weight: 500;
-}
-
-/* Action Buttons */
-.wallet-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.action-btn {
-    flex: 1;
-    padding: 0.8rem;
-    border: none;
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-}
-
-.action-btn.primary {
-    background: #2196f3;
-    color: white;
-}
-
-.action-btn.secondary {
-    background: #f5f5f5;
+.value {
+    font-size: 0.9em;
+    font-weight: bold;
     color: #333;
 }
 
-/* Add New Wallet */
+/* Wallet actions section */
+.wallet-actions {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.action-btn {
+    font-size: 0.9em;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+.action-btn.secondary {
+    background-color: #6c757d;
+}
+
+.action-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Add wallet card styling */
 .wallet.add {
-    border: 2px dashed #ddd;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: #e9ecef;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    height: 150px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.wallet.add:hover {
+    background-color: #d6e8fc;
+    transform: translateY(-5px);
 }
 
 .addBtn {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.8rem;
-    color: #666;
 }
 
 .addBtn img {
-    width: 32px;
-    height: 32px;
-    opacity: 0.6;
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
 }
 
-/* Responsive Design */
+.addBtn span {
+    font-size: 1em;
+    color: #007bff;
+    font-weight: bold;
+}
+
+/* Responsive design for smaller screens */
 @media (max-width: 768px) {
-    .cards {
-        grid-template-columns: 1fr;
-        padding: 1rem;
+    .wallet {
+        width: 90%;
+    }
+
+    .wallet.add {
+        height: 120px;
     }
 }

@@ -24,6 +24,6 @@ public class Test {
     @PostMapping("/logout")
     public String logout (Model model, HttpSession session) {
         session.invalidate();
-        return "login";
+        return "login.html";
     }
 }

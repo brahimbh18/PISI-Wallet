@@ -10,19 +10,19 @@
 </head>
 <body>
     <div class="header">
-        <h1>PISI ONLINE BANK</h1>
+  <h1>PISI WALLET</h1>
     </div>
-
+    
     <section>
         <div class="nav">
             <ul>
                 <li>
-                    <img src="/icons/dashboard.png">
-                    <span><a href="/user/wallet">Dashboard</a></span>
+                    <img src="/icons/home.png">
+                    <span><a th:href="@{/user/home}">Home</a></span>
                 </li>
                 <li>
-                    <img src="/icons/cards.png">
-                    <span><a href="/user/cards">Cards</a></span>
+                    <img src="/icons/news.png">
+                    <span><a th:href="@{/user/news}">News</a></span>
                 </li>
             </ul>
 
@@ -33,7 +33,7 @@
                 </li>
                 <li>
                     <img src="/icons/logout.png">
-                    <span>Logout</span>
+                    <span><a th:href="@{/user/logout}">Logout</a></span>
                 </li>
             </ul>
         </div>
@@ -41,7 +41,7 @@
         <div class="board">
             <h2>Add Funds to Your Wallet</h2>
             
-            <form th:action="@{/user/fund}" method="post" class="fund-form">
+            <form th:action="@{fund}" method="post" class="fund-form">
                 <div class="card-details">
                     <h3>Card Information</h3>
                     <div class="form-group">

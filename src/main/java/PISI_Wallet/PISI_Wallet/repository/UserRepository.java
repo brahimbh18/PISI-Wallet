@@ -2,9 +2,12 @@ package PISI_Wallet.PISI_Wallet.repository;
 
 import PISI_Wallet.PISI_Wallet.model.User;
 import PISI_Wallet.PISI_Wallet.rowMappers.UserRowMapper;
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class UserRepository {
@@ -68,5 +71,14 @@ public class UserRepository {
 
     public void deleteUserByCin(int cin) {
         
+    }
+
+    public List<User> getAllUsers() {
+        String sql = "SELECT * FROM Users;";
+        try {
+            return jdbcTemplate.query(sql, new UserRowMapper());
+        } catch (DataAccessException e) {
+            throw new RuntimeException("Failed to fetch transfers: " + e.getMessage(), e);
+        }
     }
 }

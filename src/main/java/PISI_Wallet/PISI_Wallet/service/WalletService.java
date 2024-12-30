@@ -20,6 +20,7 @@ public class WalletService {
     public void create(User user, String walletName) {
         Wallet wallet = walletInit(user, walletName);
         walletRepository.createWallet(wallet);
+        System.out.println("created");
     }
 
     public Wallet getWalletById(int id) {

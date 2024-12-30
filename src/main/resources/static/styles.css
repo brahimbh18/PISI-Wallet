@@ -13,7 +13,8 @@ body {
        
 }
 .header {
-    background-color: #3e2932;
+    background-color: #2C2A29;
+    color: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -41,18 +42,18 @@ body {
 }
 
 .nav li a {
-    color: white;
+    color: #C0392B;
     text-decoration: none;
 }
 
 .register {
-    background-color: #444444;
+    background-color: #6B8E23;
     border-radius: 8px;
     padding: 0.5rem 1rem;
 }
 
 .register:hover {
-    background-color: #743530;
+    background-color: #8FBC8F;
 }
 
 
@@ -60,18 +61,20 @@ body {
 
 footer {
     text-align: center;
-    background-color: #333333;
-    color: #ffffff;
-    padding: 20px; /* Adds spacing inside the footer */
-    margin-top: 20px; /* Adds some space above the footer */
+    background-color: #1C2A29;
+    color: #FFD699;
+    padding: 19px; /* Adds spacing inside the footer */
+    margin-top: 19px; /* Adds some space above the footer */
 }
 
 /* Optional: Adjust font size for smaller screens */
 footer p {
-    font-size: 14px; /* Makes text smaller on mobile */
+    font-size: 13px; /* Makes text smaller on mobile */
+    color: #FFD699;
 }
 
 /* Optional: Make footer background color change on hover (for interactivity) */
 footer:hover {
-    background-color: #444444; /* Darker shade when hovered */
+    background-color: #444443; /* Darker shade when hovered */
 }
+

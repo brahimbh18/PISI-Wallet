@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin News - PISI Online Bank</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/home.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="stylesheet" href="/news.css">
+    <link rel="stylesheet" href="/news.css">
+</head>
+<body>
+<div class="header">
+    <h1>PISI ONLINE BANK</h1>
+
+</div>
+
+<section class="main-container">
+    <div class="nav">
+        <ul>
+            <li>
+                <img src="/icons/admins.png">
+                <span><a th:href="@{/admin/home}">Users</a></span>
+            </li>
+            <li>
+                <img src="/icons/transactions.png">
+                <span><a th:href="@{/admin/transactions}">Transactions</a></span>
+            </li>
+            <li>
+                <img src="/icons/news.png">
+                <span><a th:href="@{/admin/news}">News</a></span>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <img src="/icons/settings.png">
+                <span>Settings</span>
+            </li>
+            <li>
+                <img src="/icons/logout.png">
+                <span><a th:href="@{/admin/logout}">Logout</a></span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="board">
+        <h2>News Management</h2>
+
+        <!-- Form for Adding News -->
+        <form th:action="@{/admin/news/add}" method="post" class="news-form">
+            <h3>Add News</h3>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text" id="title" name="title" required placeholder="Enter news title">
+            </div>
+            <div class="form-group">
+                <label for="content">Content</label>
+                <textarea id="content" name="content" required placeholder="Enter news content"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Add News</button>
+        </form>
+
+        <!-- List of Current News -->
+        <div class="news-container">
+            <h3>Current News</h3>
+            <div class="news-item" th:each="news : ${newsList}">
+                <h4 th:text="${news.title}">Sample Title</h4>
+                <p th:text="${news.content}">Sample content for the news article.</p>
+                <form th:action="@{/admin/news/delete/{id}(id=${news.id})}" method="post">
+                    <button type="submit" class="delete-btn">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2024 PISI Online Bank. All rights reserved.</p>
+</footer>
+</body>
+</html>

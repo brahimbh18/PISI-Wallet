@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Wallet - PISI WALLET</title>
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/dashboard.css">
     <link rel="stylesheet" href="/wallet.css">
 </head>
 <body>
     <div class="header">
-        <h1>PISI ONLINE BANK</h1>
+  <h1>PISI WALLET</h1>
 
     </div>
 
@@ -18,12 +18,12 @@
         <div class="nav">
             <ul>
                 <li>
-                    <img src="/icons/dashboard.png">
-                    <span><a href="">Dashboard</a></span>
+                    <img src="/icons/home.png">
+                    <span><a th:href="@{/user/home}">Home</a></span>
                 </li>
                 <li>
-                    <img src="/icons/cards.png">
-                    <span><a href="cards.html">Cards</a></span>
+                    <img src="/icons/news.png">
+                    <span><a th:href="@{/user/news}">News</a></span>
                 </li>
             </ul>
 
@@ -34,12 +34,12 @@
                 </li>
                 <li>
                     <img src="/icons/logout.png">
-                    <span>Logout</span>
+                    <span><a th:href="@{/user/logout}">Logout</a></span>
                 </li>
             </ul>
         </div>
         <div class="board">
-            <h2>Welcome, Brahim</h2>
+            <h2>Welcome, <span th:text="${user.firstName}"></span></h2>
             <div class="stat">
                 <div class="balance">
                     <span>Banlance :</span>
@@ -57,11 +57,11 @@
                     <div class="three">
                         <ul>
                             <li class="title">CREATED AT</li>
-                            <li class="info">12/23</li>
+                            <li class="info" th:text="${createdAt}">12/23</li>
                         </ul>
                         <ul>
                             <li class="title">WALLET HOLDER</li>
-                            <li class="info">Mohamed Brahim Bhouri</li>
+                            <li class="info"  th:text="${user.firstName} + ' ' + ${user.lastName}">Mohamed Brahim Bhouri</li>
                         </ul>
                     </div>
 
@@ -72,6 +72,7 @@
                 <div class="transaction-toggle">
                     <button class="toggle-btn active" onclick="showTransactions('payments')">Payments</button>
                     <button class="toggle-btn" onclick="showTransactions('funds')">Funds</button>
+                    <button class="toggle-btn" onclick="showTransactions('transfers')">Transfers</button>
                 </div>
 
                 <div id="payments-list" class="transactions-list">
@@ -113,20 +114,40 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div id="transfer-list" class="transactions-list" style="display: none;">
+                    <h3>Transfer Transactions</h3>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>receiving wallet id</th>
+                            <th>Amount</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="transfer : ${transfers}">
+                            <td th:text="${transfer.date}"></td>
+                            <td th:text="${transfer.receivingWalletId}"></td>
+                            <td class="positive" th:text="${transfer.amount + ' TND'}"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="quick-services">
                 <h3>Quick Services</h3>
                 <div class="services-grid">
-                    <a th:href="@{/user/payment}" class="service-card">
+                    <a th:href="@{/user/services/payment}" class="service-card">
                         <img src="icons/payment.png" alt="Payment">
                         <span>Make Payment</span>
                     </a>
-                    <a th:href="@{/user/fund}" class="service-card">
+                    <a th:href="@{/user/services/fund}" class="service-card">
                         <img src="icons/fund.png" alt="Fund">
                         <span>Add Funds</span>
                     </a>
-                    <a href="/user/transfer" class="service-card">
+                    <a href="/user/services/transfer" class="service-card">
                         <img src="/icons/transfer.png" alt="Transfer">
                         <span>Transfer Money</span>
                     </a>

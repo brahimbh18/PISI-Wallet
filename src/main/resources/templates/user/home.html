@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cards - PISI Online Bank</title>
+    <title>Home - PISI WALLET</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="stylesheet" href="/home.css">
     <link rel="stylesheet" href="/styles.css">
@@ -12,23 +12,20 @@
 </head>
 <body>
     <div class="header">
-        <h1>PISI ONLINE BANK</h1>
-        <div class="user-profile">
-            <img src="/icons/profile.png" alt="Profile">
-            <span th:text="'Welcome, ' + ${user.firstName}">Welcome, User</span>
-        </div>
+        <h1>PISI WALLET</h1>
+
     </div>
 
     <section class="main-container">
         <div class="nav">
             <ul>
                 <li>
-                    <img src="/icons/dashboard.png">
-                    <span><a th:href="@{/user/home}">Dashboard</a></span>
+                    <img src="/icons/home.png">
+                    <span><a th:href="@{/user/home}">Home</a></span>
                 </li>
                 <li>
-                    <img src="/icons/cards.png">
-                    <span><a th:href="@{/user/cards}">Cards</a></span>
+                    <img src="/icons/news.png">
+                    <span><a th:href="@{/user/news}">News</a></span>
                 </li>
             </ul>
 
@@ -39,7 +36,7 @@
                 </li>
                 <li>
                     <img src="/icons/logout.png">
-                    <span><a th:href="@{/logout}">Logout</a></span>
+                    <span><a th:href="@{/user/logout}">Logout</a></span>
                 </li>
             </ul>
         </div>
@@ -53,7 +50,6 @@
                 <div class="wallet" th:each="wallet : ${wallets}">
                     <div class="wallet-header">
                         <div class="wallet-type">
-                            <img src="/icons/savings.png" alt="Savings Icon">
                             <span th:text="${wallet.name}">Primary Savings</span>
                         </div>
                         <span class="wallet-status">Active</span>
@@ -76,19 +72,21 @@
                     </div>
 
                     <div class="wallet-actions">
-                        <button class="action-btn primary">Transfer</button>
                         <a th:href="@{/user/home/{id}(id=${wallet.id})}">
                             <button class="action-btn secondary">Details</button>
                         </a>
                     </div>
                 </div>
                 
-                <div class="wallet add">
-                    <div class="addBtn">
-                        <img src="/icons/add.png" alt="Add Wallet">
-                        <span>Create New Wallet</span>
+                <a th:href="@{/user/addWallet}" class="wallet add-link">
+                    <div class=" add">
+                        <div class="addBtn">
+                            <img src="/icons/add.png" alt="Add Wallet">
+                            <span>Create New Wallet</span>
+                        </div>
                     </div>
-                </div>
+                </a>
+                
             </div>
         </div>
     </section>

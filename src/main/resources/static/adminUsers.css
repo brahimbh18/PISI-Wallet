@@ -1,0 +1,68 @@
+.admin-profile {
+    float: right;
+}
+
+.admin-profile img {
+    width: 40px;
+    border-radius: 50%;
+}
+
+.main-container {
+    display: flex;
+}
+
+.nav {
+    width: 200px;
+    background-color: #2c3e50;
+    padding: 20px;
+    height: 100vh;
+}
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nav ul li {
+    padding: 10px;
+}
+
+.nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.nav ul li a:hover {
+    background-color: #34495e;
+}
+
+.board {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #f1f1f1;
+}
+
+footer {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 10px;
+}

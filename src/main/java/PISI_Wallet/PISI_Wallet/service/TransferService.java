@@ -21,6 +21,10 @@ public class TransferService {
         if (balance < transfer.getAmount()) {
             return false;
         }
+
+        if (walletService.getWalletById(transfer.getWalletId()) == null) {
+            return false;
+        }
         transferRepository.createTransfer(transfer);
         walletService.updateBalanceById(transfer.getWalletId(), transfer.getAmount() * -1);
         walletService.updateBalanceById(transfer.getReceivingWalletId(), transfer.getAmount() * 1);

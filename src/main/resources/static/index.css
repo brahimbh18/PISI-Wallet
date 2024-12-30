@@ -1,48 +1,64 @@
-
 .hero {
     margin: auto;
-    background-color: rgb(109, 23, 23);
+    background-color: wheat;
     height: 100vh;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem; /* Adds padding to the sides */
-    box-sizing: border-box; /* Ensures padding doesn't affect width */
+    padding: 0 2rem;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.heroContainer {
+    position: relative;
+    z-index: 2;
 }
 
 .heroContainer h2 {
-    font-size: 3rem; /* Adjusted size for better readability */
-    margin-bottom: 1rem; /* Adds space below the title */
-    color: #fff; /* White text for contrast */
-    font-family: 'Roboto', sans-serif; /* Use a modern, clean font */
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #2C2A29;
+    font-family: 'Roboto', sans-serif;
 }
 
 .heroSubtitle {
-    font-size: 1.25rem; /* Adjusted for clarity */
-    color: #f8d7da; /* Lighter color for the subtitle */
-    margin-bottom: 2rem; /* Adds space between subtitle and button */
+    font-size: 1.5rem;
+    color: #A52A2A;
+    margin-bottom: 2rem;
     font-family: 'Roboto', sans-serif;
 }
 
 .getStarted {
     margin-top: 3vh;
-    background-color: #ffffffba;
-    color: rgba(158, 1, 1, 0.531);
+    background-color: #A0522D;
+    color: #FFFFFF;
     border: none;
-    padding: 12px 24px; /* Slightly larger padding for better touch targets */
-    font-size: 1.2rem; /* Larger font size */
-    border-radius: 8px; /* More rounded corners */
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Added transition for a hover effect */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .getStarted:hover {
-    background-color: #52313f; /* Lighter shade for hover */
-    color: #ffffff;
-    transform: translateY(-3px); /* Adds a subtle lift effect */
+    background-color: #8B4513;
+    color: #FFFFFF;
 }
+
 .getStarted a {
     text-decoration: none;
 }
@@ -50,31 +66,31 @@
 /* Responsive design */
 @media (max-width: 768px) {
     .heroContainer h2 {
-        font-size: 2rem; /* Smaller title size */
+        font-size: 3rem;
     }
 
     .heroSubtitle {
-        font-size: 1rem; /* Smaller subtitle */
+        font-size: 1.25rem;
     }
 
     .getStarted {
-        padding: 10px 20px; /* Adjust button padding */
-        font-size: 1rem; /* Adjust button text size */
+        padding: 12px 24px;
+        font-size: 1.2rem;
     }
 }
 
 @media (max-width: 480px) {
     .heroContainer h2 {
-        font-size: 1.5rem; /* Even smaller title for smaller screens */
+        font-size: 2rem;
     }
 
     .heroSubtitle {
-        font-size: 0.9rem; /* Adjust subtitle size */
+        font-size: 1rem;
     }
 
     .getStarted {
-        padding: 8px 16px; /* Further adjusted padding */
-        font-size: 0.9rem; /* Adjust button text size */
+        padding: 10px 20px;
+        font-size: 1rem;
     }
 }
 
@@ -82,7 +98,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(208, 206, 206, 0.501);
+    background-color: #F0F8FF;
     padding: 2rem;
     border-radius: 8px;
 }
@@ -94,6 +110,7 @@
 h3 {
     font-size: 2.5rem;
 }
+
 span {
     font-size: 1.3rem;
 }
@@ -102,7 +119,7 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: #FAFAD2;
     border-radius: 2rem;
     width: 40vw;
     height: 40vh;
@@ -111,9 +128,9 @@ span {
 
 .contacts h2 {
     font-size: 30px;
+    color: #2E8B57;
 }
 
-.contactsContainer{
+.contactsContainer {
     max-width: fit-content;
-
 }
